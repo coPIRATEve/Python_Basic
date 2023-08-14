@@ -1,6 +1,7 @@
 while True:
     word = input('Введите слово (Чтобы прекратить - конец): ')
     if word == 'конец':
+        print('конец работы')
         break
 
     word_list = list(word)
