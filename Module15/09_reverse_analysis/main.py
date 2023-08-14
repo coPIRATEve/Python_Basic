@@ -1,4 +1,10 @@
-# TODO здесь писать код
+input_num = input("Введите список чисел через пробел: ")
+split_numbers = input_num.split()
 
-# Список чисел для работы (итоговый алгоритм проверьте на разных списках, придуманных самостоятельно):
-numbers_list = [7, 14, 3, 18, 21, 10, 9, 6]
+numbers = [int(x) for x in split_numbers]
+
+print("Список чисел:", numbers)
+
+for num in reversed(numbers):
+    if num % 2 == 0:
+        print(num)
