@@ -2,14 +2,14 @@ num_skates = int(input("Кол-во коньков: "))
 skate_sizes = []
 
 for i in range(num_skates):
-    size = int(input("Размер", i + 1,"-й пары: "))
+    size = int(input(f"Размер {i + 1}-й пары: "))
     skate_sizes.append(size)
 
 num_people = int(input("Кол-во людей: "))
 people_sizes = []
 
 for i in range(num_people):
-    size = int(input("Размер", i + 1,"-го человека: "))
+    size = int(input(f"Размер {i + 1}-й че: "))
     people_sizes.append(size)
 
 num_fitted = 0
