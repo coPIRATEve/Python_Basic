@@ -9,7 +9,7 @@ def count_uppercase_lowercase(text):
         elif _.islower():
             lowercase_count += 1
 
-    return uppercase_count, lowercase_counе
+    return uppercase_count, lowercase_count
 
 
 text = input("Введите строку для анализа: ")
