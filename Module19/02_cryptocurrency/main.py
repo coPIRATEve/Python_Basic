@@ -2,8 +2,8 @@ data = {
     "address": "0x544444444444",
     "ETH": {
         "balance": 444,
-        "total_in": 444,
-        "total_out": 4
+        "totalIn": 444,
+        "totalOut": 4
     },
     "count_txs": 2,
     "tokens": [
@@ -44,5 +44,20 @@ data = {
     ]
 }
 
+print("Keys:")
+print(list(data.keys()))
+print("Values:")
+print(list(data.values()))
 
-# TODO здесь писать код
+data["ETH"]["total_diff"] = 100
+
+data["tokens"][0]["fst_token_info"]["name"] = "doge"
+
+total_out_sum = sum(item["total_out"] for item in data["tokens"])
+data["ETH"]["totalOut"] = total_out_sum
+for token in data["tokens"]:
+    del token["total_out"]
+
+data["tokens"][1]["sec_token_info"]["total_price"] = data["tokens"][1]["sec_token_info"].pop("price")
+
+print(data)

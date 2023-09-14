@@ -24,4 +24,12 @@ store = {
     ],
 }
 
-# TODO здесь писать код
+for item, sku in goods.items():
+    total_quantity = 0
+    total_cost = 0
+
+    for record in store[sku]:
+        total_quantity += record['quantity']
+        total_cost += record['quantity'] * record['price']
+
+    print(f'{item} — {total_quantity} штук, стоимость {total_cost} рублей')
