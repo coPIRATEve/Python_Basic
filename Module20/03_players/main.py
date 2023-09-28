@@ -4,4 +4,7 @@ players = {
     ("Rob", "Bobbin"): (12, 8, 2)
 }
 
-# TODO здесь писать код
+result = [(first, last, *scores) for (first, last), scores in players.items()]
+
+print(result)
+
