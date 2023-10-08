@@ -15,7 +15,7 @@ def is_prime(n):
 def crypto(iterable):
     return [element for index, element in enumerate(iterable) if is_prime(index)]
 
-number = input("ведите числа через запятую: ")
+number = input("Ведите числа через запятую: ")
 numbers = number.split(', ')
 numbers_list = []
 for num_str in numbers:
