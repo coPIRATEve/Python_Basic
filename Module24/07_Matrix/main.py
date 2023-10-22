@@ -12,7 +12,7 @@ class Matrix:
 
     def add(self, other):
         if self.rows != other.rows or self.cols != other.cols:
-            raise ValueError("Матрицы должный быть одинаковыми")
+            raise ValueError("Матрицы должны быть одинаковыми")
         result = Matrix(self.rows, self.cols)
         for i in range(self.rows):
             for j in range(self.cols):
@@ -21,7 +21,7 @@ class Matrix:
 
     def subtract(self, other):
         if self.rows != other.rows or self.cols != other.cols:
-            raise ValueError("Матрицы должный быть одинаковыми")
+            raise ValueError("Матрицы должны быть одинаковыми")
         result = Matrix(self.rows, self.cols)
         for i in range(self.rows):
             for j in range(self.cols):
