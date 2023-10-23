@@ -3,53 +3,79 @@ class Element:
         self.name = name
 
     def __add__(self, other):
-        if isinstance(other, Element):
-            if (self.name, other.name) in [('Вода', 'Воздух'), ('Воздух', 'Вода')]:
-                return Storm()
-            elif (self.name, other.name) in [('Вода', 'Огонь'), ('Огонь', 'Вода')]:
-                return Steam()
-            elif (self.name, other.name) in [('Вода', 'Земля'), ('Земля', 'Вода')]:
-                return Mud()
-            elif (self.name, other.name) in [('Воздух', 'Огонь'), ('Огонь', 'Воздух')]:
-                return Lightning()
-            elif (self.name, other.name) in [('Воздух', 'Земля'), ('Земля', 'Воздух')]:
-                return Dust()
-            elif (self.name, other.name) in [('Огонь', 'Земля'), ('Земля', 'Огонь')]:
-                return Lava()
         return None
 
     def __str__(self):
         return self.name
 
+class Water(Element):
+    def __init__(self):
+        super().__init__('Вода')
+    def __add__(self, other):
+        if isinstance(other, Air):
+            return Storm()
+        elif isinstance(other, Fire):
+            return Steam()
+        elif isinstance(other, Earth):
+            return Mud()
+        return None
+
+class Air(Element):
+    def __init__(self):
+        super().__init__('Воздух')
+
+    def __add__(self, other):
+        if isinstance(other, Fire):
+            return Lightning()
+        elif isinstance(other, Earth):
+            return Dust()
+        return None
+
+class Fire(Element):
+    def __init__(self):
+        super().__init__('Огонь')
+
+    def __add__(self, other):
+        if isinstance(other, Earth):
+            return Lava()
+        return None
+
+class Earth(Element):
+    def __init__(self):
+        super().__init__('Земля')
 
 class Storm(Element):
     def __init__(self):
-        super().__init__('Шторм')
-
+        super().__init('Шторм')
 
 class Steam(Element):
     def __init__(self):
-        super().__init__('Пар')
-
+        super().__init('Пар')
 
 class Mud(Element):
     def __init__(self):
-        super().__init__('Грязь')
-
+        super().__init('Грязь')
 
 class Lightning(Element):
     def __init__(self):
-        super().__init__('Молния')
-
+        super().__init('Молния')
 
 class Dust(Element):
     def __init__(self):
-        super().__init__('Пыль')
-
+        super().__init('Пыль')
 
 class Lava(Element):
     def __init__(self):
-        super().__init__('Лава')
-class YourElement(Element):
-    def __init__(self):
-        super().__init('Ваш элемент')
+        super().__init('Лава')
+
+
+water = Water()
+air = Air()
+fire = Fire()
+earth = Earth()
+
+result = water + air
+if result:
+    print(f"Результат: {result}")
+else:
+    print("Комбинация не определена.")
