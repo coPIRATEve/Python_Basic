@@ -30,7 +30,7 @@ class Matrix:
 
     def multiply(self, other):
         if self.cols != other.rows:
-            raise ValueError("Кол-во столбцов одной матрицы должно совпадать с кол-вом строк другой")
+            raise ValueError("Количество столбцов одной матрицы должно совпадать с Количеством строк другой")
         result = Matrix(self.rows, other.cols)
         for i in range(self.rows):
             for j in range(other.cols):
