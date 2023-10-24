@@ -47,8 +47,13 @@ class Matrix:
 
 
 m1 = Matrix(2, 2)
+m1.data = [[2, 2], [2, 2]]
+
 m2 = Matrix(2, 2)
+m2.data = [[3, 3], [3, 3]]
+
 m3 = Matrix(2, 2)
+m3.data = [[3, 3], [3, 3]]
 
 print("Матрица 1:")
 print(m1)
