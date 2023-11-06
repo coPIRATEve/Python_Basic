@@ -23,7 +23,7 @@ def process_python_files(directory):
     Генератор обрабатывает все py файлы в указанной директории.
 
     :param directory: Путь к директории.
-    :yield: Количество непустых строк в каждом py файле.
+    :yield: Кол-во непустых строк в каждом py файле.
     """
     for root, _, files in os.walk(directory):
         for file_name in files:
