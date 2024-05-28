@@ -1,44 +1,68 @@
-class MyMath:
-    PI = 3.141592653589793
+def multiply_polynomials(poly1, poly2):
+    result = [0] * (len(poly1) + len(poly2) - 1)
+    for i, coeff1 in enumerate(poly1):
+        for j, coeff2 in enumerate(poly2):
+            result[i + j] += coeff1 * coeff2
+    return result
 
-    @staticmethod
-    def circle_len(radius):
-        """длина окружности."""
-        return 2 * MyMath.PI * radius
+def print_polynomial(poly, var='x'):
+    terms = []
+    for i, coeff in enumerate(poly):
+        if coeff != 0:
+            term = ''
+            if coeff != 1 or i == 0:
+                term += str(coeff)
+            if i > 0:
+                term += var
+                if i > 1:
+                    term += '^' + str(i)
+            terms.append((i, term))
+    # Sort terms by power in descending order
+    terms.sort(reverse=True, key=lambda x: x[0])
+    return ' + '.join(term for _, term in terms)
 
-    @staticmethod
-    def circle_sq(radius):
-        """площадь окружности."""
-        return MyMath.PI * radius ** 2
+def main():
+    print("Введите тип операции над многочленами (sum или diff):")
+    op_type = input().strip()
+    if op_type not in ['sum', 'diff']:
+        print("Неверный тип операции")
+        return
 
-    @classmethod
-    def cube_volume(cls, side_length):
-        """объём куба."""
-        return side_length ** 3
+    print("Введите степень первого многочлена:")
+    degree1 = int(input().strip())
+    poly1 = []
+    for i in range(degree1 + 1):
+        print(f"Введите коэффициент x^{i}:")
+        poly1.append(float(input().strip()))
 
-    @staticmethod
-    def sphere_surface_area(radius):
-        """площадь поверхности сферы."""
-        return 4 * MyMath.PI * radius ** 2
+    print("Введите степень второго многочлена:")
+    degree2 = int(input().strip())
+    poly2 = []
+    for i in range(degree2 + 1):
+        print(f"Введите коэффициент x^{i}:")
+        poly2.append(float(input().strip()))
 
-    @classmethod
-    def cube_surface_area(cls, side_length):
-        """площадь поверхности куба."""
-        return 6 * side_length ** 2
+    if op_type == 'sum':
+        if len(poly1) > len(poly2):
+            poly2.extend([0] * (len(poly1) - len(poly2)))
+        else:
+            poly1.extend([0] * (len(poly2) - len(poly1)))
+        result_poly = [a + b for a, b in zip(poly1, poly2)]
+    else:
+        if len(poly1) > len(poly2):
+            poly2.extend([0] * (len(poly1) - len(poly2)))
+        else:
+            poly1.extend([0] * (len(poly2) - len(poly1)))
+        result_poly = [a - b for a, b in zip(poly1, poly2)]
 
+    print("Первый многочлен:", print_polynomial(poly1))
+    print("Второй многочлен:", print_polynomial(poly2))
+    print("Результат операции:", print_polynomial(result_poly))
 
-radius_value = float(input("Введите радиус: "))
-side_length_value = float(input("Введите длину стороны куба: "))
+    print("Введите число, на которое умножить результат:")
+    num = float(input().strip())
+    result_poly = [coeff * num for coeff in result_poly]
+    print("Результат умножения:", print_polynomial(result_poly))
 
-res_1 = MyMath.circle_len(radius=radius_value)
-res_2 = MyMath.circle_sq(radius=radius_value)
-res_3 = MyMath.cube_volume(side_length=side_length_value)
-res_4 = MyMath.sphere_surface_area(radius=radius_value)
-res_5 = MyMath.cube_surface_area(side_length=side_length_value)
-
-print(res_1)
-print(res_2)
-print(res_3)
-print(res_4)
-print(res_5)
-
+if __name__ == "__main__":
+    main()
